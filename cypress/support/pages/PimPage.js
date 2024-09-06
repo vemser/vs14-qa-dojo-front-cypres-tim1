@@ -22,7 +22,7 @@ Cypress.Commands.add("criarUsuarioEmBranco", (usuarioPIM) => {
     cy.wait(3000)
     cy.clicar(btnSave)
     cy.validarTexto(campoNomeObrigatorio, "Required")
-    cy.validarTexto(camp, "Required")
+    cy.validarTexto(campoSobrenomeObrigatorio, "Required")
 })
 
 
