@@ -10,6 +10,7 @@ let inputEmployeeFirstName = 'input[name=\'firstName\']'
 let inputEmployeeMiddleName = 'input[name=\'middleName\']'
 let inputEmployeeLastName = 'input[name=\'lastName\']'
 let btnSave = 'button[class$=\'orangehrm-left-space\']'
+let infoPersonalDetailName = '.orangehrm-edit-employee-name > h6'
 
 
 Cypress.Commands.add("criarUsuarioValido", (usuarioPIM) => {
@@ -19,6 +20,8 @@ Cypress.Commands.add("criarUsuarioValido", (usuarioPIM) => {
     cy.preencherCampo(inputEmployeeMiddleName, usuarioPIM.nomeDoMeio)
     cy.preencherCampo(inputEmployeeLastName, usuarioPIM.sobrenome)
     cy.clicar(btnSave)
+    cy.url().should('contain', "viewPersonalDetails")
+    //cy.validarTexto(, viewPersonalDetails)
 })
 
 Cypress.Commands.add('PimPage', () => {
