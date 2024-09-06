@@ -17,6 +17,7 @@
 import './commands'
 import './pages/basePage'
 import './pages/LoginPage'
+import './pages/PimPage'
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     // returning false here prevents Cypress from failing the test

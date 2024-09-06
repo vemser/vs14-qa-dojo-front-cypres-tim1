@@ -12,8 +12,7 @@ let inputEmployeeLastName = 'input[name=\'lastName\']'
 let btnSave = 'button[class$=\'orangehrm-left-space\']'
 
 
-Cypress.Commands.add("criarUsuarioValido", (usuario, usuarioPIM) => {
-    cy.fluxoLogin(usuario)
+Cypress.Commands.add("criarUsuarioValido", (usuarioPIM) => {
     cy.clicar(btnPim)
     cy.clicar(btnAddEmployee)
     cy.preencherCampo(inputEmployeeFirstName, usuarioPIM.nome)
@@ -21,3 +20,11 @@ Cypress.Commands.add("criarUsuarioValido", (usuario, usuarioPIM) => {
     cy.preencherCampo(inputEmployeeLastName, usuarioPIM.sobrenome)
     cy.clicar(btnSave)
 })
+
+Cypress.Commands.add('PimPage', () => {
+    cy.writeFile('cypress/fixtures/pim.json', {
+        'nome':faker.person.firstName(),
+        'nomeDoMeio':faker.person.middleName(),
+        'sobrenome': faker.person.lastName()
+    })
+}) 
