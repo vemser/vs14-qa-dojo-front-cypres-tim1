@@ -9,4 +9,8 @@ describe("login", () => {
             cy.fluxoLogin(usuario)
         })
     })
+
+    it.only("Test2 - Login com dados inválidos", () =>{
+        cy.fluxoLoginDadosInvalidos()
+    })
 })
