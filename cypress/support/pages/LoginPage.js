@@ -1,23 +1,15 @@
-let Username = "input[name='username']"
-let passworld = "input[name='password']"
+let username = "input[name='username']"
+let password = "input[name='password']"
 let btnLogin = "button[type='submit']"
 let btnEsquecerSenha= ".orangehrm-login-forgot > p"
 
-preencherUsername(){
-cy.get(this.Username)
+Cypress.Commands.add("fluxoLogin", (usuario) => {
+    cy.visit();
+    cy.get(this.username).type(usuario.login)
+    cy.get(this.password).type(usuario.password)
+    cy.get(this.btnLogin).click()
+})
 
-}
-
-preencherPassworld(){
-    cy.get(this.passworld)
-
-}
-
-clicarBtnLogin(){
-    cy.get(this.btnLogin)
-
-}
-clicarBtnEsqueciMinhaSenha(){
-    cy.get(this.btnLogin)
-
-}
+/*clicarBtnEsqueciMinhaSenha(){
+    cy.get(this.btnLogin).click
+}*/
