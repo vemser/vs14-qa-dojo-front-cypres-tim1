@@ -1,3 +1,5 @@
+
+
 Cypress.Commands.add('preencherCampo', (element, value) => {
   cy.get(element).type(value, {force: true})
 })

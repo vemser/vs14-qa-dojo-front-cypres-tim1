@@ -1,15 +1,20 @@
+import './basePage'
+
 let username = "input[name='username']"
 let password = "input[name='password']"
 let btnLogin = "button[type='submit']"
 let btnEsquecerSenha= ".orangehrm-login-forgot > p"
 
-Cypress.Commands.add("fluxoLogin", (username) => {
+Cypress.Commands.add("fluxoLogin", (usuario) => {
     cy.navegar()
-    cy.preencherCampo(username.login)
-    cy.preencherCampo(username.password)
+    cy.preencherCampo(username, usuario.login)
+    cy.preencherCampo(password, usuario.password)
     cy.clicar(btnLogin)
 })
 
-/*clicarBtnEsqueciMinhaSenha(){
-    cy.get(this.btnLogin).click
-}*/
+Cypress.Commands.add("fluxoLogin", (usuario) => {
+    cy.navegar()
+    cy.preencherCampo(username, usuario.login)
+    cy.preencherCampo(password, usuario.password)
+    cy.clicar(btnLogin)
+})
