@@ -10,7 +10,20 @@ let inputEmployeeFirstName = 'input[name=\'firstName\']'
 let inputEmployeeMiddleName = 'input[name=\'middleName\']'
 let inputEmployeeLastName = 'input[name=\'lastName\']'
 let btnSave = 'button[class$=\'orangehrm-left-space\']'
-let infoPersonalDetailName = '.orangehrm-edit-employee-name > h6'
+let deuCerto = '.oxd-text--toast-message'
+
+
+let campoNomeObrigatorio = '.--name-grouped-field > :nth-child(1) > .oxd-text'
+let campoSobrenomeObrigatorio = '.--name-grouped-field > :nth-child(3) > .oxd-text'
+
+Cypress.Commands.add("criarUsuarioEmBranco", (usuarioPIM) => {
+    cy.clicar(btnPim)
+    cy.clicar(btnAddEmployee)
+    cy.wait(3000)
+    cy.clicar(btnSave)
+    cy.validarTexto(campoNomeObrigatorio, "Required")
+    cy.validarTexto(camp, "Required")
+})
 
 
 Cypress.Commands.add("criarUsuarioValido", (usuarioPIM) => {
@@ -20,8 +33,7 @@ Cypress.Commands.add("criarUsuarioValido", (usuarioPIM) => {
     cy.preencherCampo(inputEmployeeMiddleName, usuarioPIM.nomeDoMeio)
     cy.preencherCampo(inputEmployeeLastName, usuarioPIM.sobrenome)
     cy.clicar(btnSave)
-    cy.url().should('contain', "viewPersonalDetails")
-    //cy.validarTexto(, viewPersonalDetails)
+    cy.validarTexto(deuCerto, "Successfully Saved")
 })
 
 Cypress.Commands.add('PimPage', () => {
